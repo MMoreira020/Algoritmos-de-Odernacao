@@ -13,7 +13,7 @@ string Algoritmo_Escolhido(int tipo){
 
     switch (tipo){
     case 1:
-        tipo_algoritmo = "mkdir .\\Insertion_sort\\";
+        tipo_algoritmo = "Insertion_sort\\";
         return tipo_algoritmo;
         break;
     

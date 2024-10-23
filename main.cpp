@@ -14,7 +14,7 @@ int main(){
     int tipo;
     int quantidade;
 
-    while(algoritmo != 0){
+    while(true){
 
         algoritmo = menuOpcoes(); 
         system("cls");
