@@ -49,7 +49,7 @@ void Crescente(int tipo, int quantidade){
     string nome_do_arquivo; // concatena com o nome do arquivo gerado
     int seed; // sementes 
 
-    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos De Entrada\\Crescente\\entradacrescente" + to_string(quantidade) + ".txt";
+    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos De Entrada\\Crescente\\EntradaCrescente" + to_string(quantidade) + ".txt";
     arquivo = fopen(nome_do_arquivo.c_str(), "w");
     fprintf(arquivo, "%d\n", quantidade);
 
@@ -59,6 +59,7 @@ void Crescente(int tipo, int quantidade){
 
     // Gerar números aleatórios que serão usados no inicio do for
 
+    
     seed = (rand() % 1000000) * 100; // gera números aleatórios 
 
     for  (i = seed; j < quantidade; i++){
@@ -72,13 +73,13 @@ void Crescente(int tipo, int quantidade){
     tempo = Organiza(tipo, array, quantidade);
 
     // arquivo de tempo
-    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos De tempo\\Crescente\\tempocrescente" + to_string(quantidade) + ".txt";
+    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos De tempo\\Crescente\\TempoCrescente" + to_string(quantidade) + ".txt";
     arquivo = fopen(nome_do_arquivo.c_str(), "w");
-    fprintf(arquivo, "%.2f\n", tempo);
+    fprintf(arquivo, "%.5f\n", tempo);
     fclose(arquivo);
 
     // arquivo de saída
-    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos De Saida\\Crescente\\saidacrescente" + to_string(quantidade) + ".txt";
+    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos De Saida\\Crescente\\SaidaCrescente" + to_string(quantidade) + ".txt";
     arquivo = fopen(nome_do_arquivo.c_str(), "w");
     fprintf(arquivo, "%d\n", quantidade);
     // escrever os elementos do array no arquivo
@@ -96,7 +97,7 @@ void Decrescente(int tipo, int quantidade){
     string nome_do_arquivo; // concatena o nome do arquivo gerado
     int seed; // gera sementes
 
-    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos De Entrada\\Decrescente\\entradadecrescente" + to_string(quantidade) + ".txt";
+    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos De Entrada\\Decrescente\\EntradadeCrescente" + to_string(quantidade) + ".txt";
     arquivo = fopen(nome_do_arquivo.c_str(), "w");
     fprintf(arquivo, "%d\n", quantidade);
 
@@ -116,13 +117,13 @@ void Decrescente(int tipo, int quantidade){
     // arquivo de tempo
     tempo = Organiza(tipo, array, quantidade);
     // concatenar arquivo de tempo
-    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Tempo\\Decrescente\\tempodecrescente" + to_string(quantidade) + ".txt";
+    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Tempo\\Decrescente\\TempodeCrescente" + to_string(quantidade) + ".txt";
     arquivo = fopen(nome_do_arquivo.c_str(), "w");
-    fprintf(arquivo, "%.2f\n", tempo);
+    fprintf(arquivo, "%.5f\n", tempo);
     fclose(arquivo);
 
     // arquivo de saida
-    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Saida\\Decrescente\\saidadecrescente" + to_string(quantidade) + ".txt";
+    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Saida\\Decrescente\\SaidadeCrescente" + to_string(quantidade) + ".txt";
     arquivo = fopen(nome_do_arquivo.c_str(), "w");
     fprintf(arquivo, "%d\n", quantidade);
     for (i = 0; i < quantidade; i++){
@@ -138,7 +139,7 @@ void Random(int tipo, int quantidade){
     double tempo; // armazenar o tempo
     string nome_do_arquivo; // concatena o nome do arquivo gerado
 
-    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Entrada\\Random\\entradarandom" + to_string(quantidade) + ".txt";
+    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Entrada\\Random\\EntradaRandom" + to_string(quantidade) + ".txt";
     arquivo = fopen(nome_do_arquivo.c_str(), "w");
     fprintf(arquivo, "%d\n", quantidade);
 
@@ -156,13 +157,13 @@ void Random(int tipo, int quantidade){
     // arquivo de tempo
     tempo = Organiza(tipo, array, quantidade);
     // concatena arquivo de tempo
-    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Tempo\\Random\\temporandom" + to_string(quantidade) + ".txt";
+    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Tempo\\Random\\TempoRandom" + to_string(quantidade) + ".txt";
     arquivo = fopen(nome_do_arquivo.c_str(), "w");
-    fprintf(arquivo, "%.2f\n", tempo);
+    fprintf(arquivo, "%.5f\n", tempo);
     fclose(arquivo);
 
     // arquivo de saída
-    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Saida\\Random\\saidarandom" + to_string(quantidade) + ".txt";
+    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Saida\\Random\\SaidaRandom" + to_string(quantidade) + ".txt";
     arquivo = fopen(nome_do_arquivo.c_str(), "w");
     fprintf(arquivo, "%d\n", quantidade);
     for (i = 0; i < quantidade; i++){
