@@ -10,7 +10,7 @@ int menuOpcoes(){
         // Menu de opções do algorítmo 
 
         cout << endl;
-        cout<< "PROJETO DE ALGORITMOS" <<endl;
+        cout<< "      PROJETO DE ALGORITMOS     " <<endl;
         cout << "===============================" <<endl;
         cout << "        MENU DE OPCOES        " <<endl;
         cout << "===============================" <<endl;
@@ -19,6 +19,9 @@ int menuOpcoes(){
 
         cout << "Escolha uma opcao: " <<endl;
         cout << "1 - Ordenar com Insertion Sort" <<endl;
+        cout << "2 - Ordenar com Selection Sort" <<endl;
+        cout << "3 - Ordenar com Bubble Sort" <<endl;
+        cout << "4 - Ordenar com Shell Sort" <<endl;
         cout << "0 - Sair" <<endl;
 
         cin >> opcao1;

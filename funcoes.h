@@ -17,6 +17,22 @@ string Algoritmo_Escolhido(int tipo){
         return tipo_algoritmo;
         break;
     
+    case 2:
+        tipo_algoritmo = "SelectionSort\\";
+        return tipo_algoritmo;
+        break;
+    
+    case 3:
+        tipo_algoritmo = "BubbleSort\\";
+        return tipo_algoritmo;
+        break;
+    
+    case 4:
+        tipo_algoritmo = "ShellSort\\";
+        return tipo_algoritmo;
+        break;
+
+    
     default:
         cout << "ERRO - NAO FOI POSSIVEL CRIAR A PASTA";
         exit(1);
@@ -32,6 +48,18 @@ double Organiza(int algoritmo, int *array, int tamanho){
     {
     case 1:
         tempo = insertion_sort(array, tamanho);
+        break;
+
+    case 2:
+        tempo = selectionSort(array, tamanho);
+        break;
+    
+    case 3:
+        tempo = bubbleSort(array, tamanho);
+        break;
+    
+    case 4:
+        tempo = shellSort(array, tamanho);
         break;
     
     default:
