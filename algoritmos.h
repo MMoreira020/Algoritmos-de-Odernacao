@@ -69,7 +69,7 @@ double bubbleSort(int *array, int tamanho){
 
     IniC = clock(); // tempo incial
     // loop externo --> corresponde ao número de elementos a serem classificados
-    for (i = 0; i < tamanho; i++){
+    for (i = 1; i < tamanho; i++){
         for (j = 0; j < tamanho - i; j++){
             if (array[j] > array[j + 1]){
                 aux = array[j];

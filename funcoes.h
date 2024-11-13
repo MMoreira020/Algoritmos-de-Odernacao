@@ -87,7 +87,6 @@ void Crescente(int tipo, int quantidade){
 
     // Gerar números aleatórios que serão usados no inicio do for
 
-    
     seed = (rand() % 1000000) * 100; // gera números aleatórios 
 
     for  (i = seed; j < quantidade; i++){
