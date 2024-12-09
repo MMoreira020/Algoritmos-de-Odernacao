@@ -22,6 +22,7 @@ int menuOpcoes(){
         cout << "2 - Ordenar com Selection Sort" <<endl;
         cout << "3 - Ordenar com Bubble Sort" <<endl;
         cout << "4 - Ordenar com Shell Sort" <<endl;
+        cout << "5 - Ordenar com Merge Sort" <<endl;
         cout << "0 - Sair" <<endl;
 
         cin >> opcao1;

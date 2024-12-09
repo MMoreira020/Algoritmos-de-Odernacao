@@ -5,6 +5,8 @@
 #include <ctime>
 #include <stdio.h>
 #include <vector>
+#include <math.h>
+#include <conio.h>
 
 using namespace std;
 
@@ -112,4 +114,57 @@ double shellSort(int *array, int tamanho){
     return tempo;
 }
 
+void merge(int *array, int inicio, int meio, int fim){
+    int *temp, p1, p2, tam, i, j, k;
+    int fim_1 = 0, fim_2 = 0;
+    tam = fim - inicio + 1;
+
+    p1 = inicio;
+    p2 = meio + 1;
+
+    temp = (int*)malloc(tam*sizeof(int));
+    if (temp != NULL){
+        for(i = 0; i < tam; i++){
+            if(!fim_1 && !fim_2){
+                if(array[p1] < array[p2])
+                    temp[i] = array[p1++];
+                else
+                    temp[i] = array[p2++];
+                
+                if(p1 > meio) fim_1 = 1;
+                if(p2 > fim) fim_2 = 1;
+            }else{
+                if(!fim_1)
+                    temp[i] = array[p1++];
+                else
+                    temp[i] = array[p2++];
+            }
+        }
+        for (j = 0, k = inicio; j < tam; j++, k++){
+            array[k] = temp[j];
+        }
+    }
+    free(temp);
+}
+
+double merge_sort(int *array, int inicio, int fim){
+    double tempo;
+    clock_t IniC, FimC;
+    IniC = clock(); // tempo inicial
+
+    int meio;
+
+    if(inicio < fim){
+        meio = floor((inicio + fim)/ 2);
+        merge_sort(array, inicio, meio);
+        merge_sort(array, meio + 1, fim);
+        merge(array, inicio, meio, fim);
+    }
+
+    FimC = clock();
+
+    tempo = (FimC - IniC) / (double)CLOCKS_PER_SEC;
+
+    return tempo;
+}
 #endif

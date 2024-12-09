@@ -31,6 +31,11 @@ string Algoritmo_Escolhido(int tipo){
         tipo_algoritmo = "ShellSort\\";
         return tipo_algoritmo;
         break;
+    
+    case 5: 
+        tipo_algoritmo = "MergeSort\\";
+        return tipo_algoritmo;
+        break;
 
     
     default:
@@ -62,6 +67,10 @@ double Organiza(int algoritmo, int *array, int tamanho){
         tempo = shellSort(array, tamanho);
         break;
     
+    case 5:
+        tempo = merge_sort(array, 0, tamanho - 1);
+        break;
+    
     default:
         cout << "ERRO - NAO ENTROU NA FUNCAO DE ORGANIZACAO!\n";
         exit(1);
@@ -87,7 +96,8 @@ void Crescente(int tipo, int quantidade){
 
     // Gerar números aleatórios que serão usados no inicio do for
 
-    seed = (rand() % 1000000) * 100; // gera números aleatórios 
+    srand(time(NULL));
+    seed = ((rand() % 9) + 1) * 1000000; // gera números aleatórios 
 
     for  (i = seed; j < quantidade; i++){
         array[j] = i; // insere o número no array
@@ -124,7 +134,7 @@ void Decrescente(int tipo, int quantidade){
     string nome_do_arquivo; // concatena o nome do arquivo gerado
     int seed; // gera sementes
 
-    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos De Entrada\\Decrescente\\EntradadeCrescente" + to_string(quantidade) + ".txt";
+    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos De Entrada\\Decrescente\\EntradaDecrescente" + to_string(quantidade) + ".txt";
     arquivo = fopen(nome_do_arquivo.c_str(), "w");
     fprintf(arquivo, "%d\n", quantidade);
 
@@ -132,7 +142,8 @@ void Decrescente(int tipo, int quantidade){
 
     int *array = new int[quantidade]; // alocando memória para um array de inteiros
 
-    seed = (rand() % 1000000) * 100; // gera números aleatórios
+    srand(time(NULL));
+    seed = ((rand() % 9) + 1) * 1000000; // gera números aleatórios
 
     for (i = seed; j < quantidade; i--){
         array[j] = i; // insere o número no array
@@ -144,18 +155,19 @@ void Decrescente(int tipo, int quantidade){
     // arquivo de tempo
     tempo = Organiza(tipo, array, quantidade);
     // concatenar arquivo de tempo
-    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Tempo\\Decrescente\\TempodeCrescente" + to_string(quantidade) + ".txt";
+    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Tempo\\Decrescente\\TempodeDecrescente" + to_string(quantidade) + ".txt";
     arquivo = fopen(nome_do_arquivo.c_str(), "w");
     fprintf(arquivo, "%.5f\n", tempo);
     fclose(arquivo);
 
     // arquivo de saida
-    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Saida\\Decrescente\\SaidadeCrescente" + to_string(quantidade) + ".txt";
+    nome_do_arquivo = Algoritmo_Escolhido(tipo) + "Arquivos de Saida\\Decrescente\\SaidaDecrescente" + to_string(quantidade) + ".txt";
     arquivo = fopen(nome_do_arquivo.c_str(), "w");
     fprintf(arquivo, "%d\n", quantidade);
     for (i = 0; i < quantidade; i++){
         fprintf(arquivo, "%d\n", array[i]);
     }
+
     delete[] array;
 }
 
@@ -172,7 +184,8 @@ void Random(int tipo, int quantidade){
 
     int *array = new int[quantidade]; // alocano um array de inteiros
 
-    seed = (rand() % 1000000) * 100; // gerar números aleatórios
+    srand(time(NULL));
+    seed = ((rand() % 9) + 1) * 1000000; // gerar números aleatórios
 
     for (i = 0; i < quantidade; i++){
         seed = ((rand() % 1000) * 1000) + rand () % 1000 + ((rand() % 9 + 1) * 1000000); // produz valores múltiplos de 1000, adiciona um número entre 0 e 999 e adiciona um número aleatório entre 1000000 e 9000000
