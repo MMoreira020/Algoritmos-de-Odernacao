@@ -167,4 +167,292 @@ double merge_sort(int *array, int inicio, int fim){
 
     return tempo;
 }
+
+// Quick Sort
+
+void particao(int* vetor, int esq, int dir, int* i, int* j){
+    int x, w;
+    *i = esq;
+    *j = dir;
+    x = vetor[esq];
+
+    do{
+        while(x > vetor[*i])(*i)++;
+        while(x < vetor[*j])(*j)--;
+        if(*i <= *j){
+            w = vetor[*i];
+            vetor[*i] = vetor[*j];
+            vetor[*j] = w;
+            (*i)++;
+            (*j)--;
+        }
+    }while(*i <= *j);
+}
+
+void ordena(int* vetor, int esq, int dir){
+    int i, j;
+    particao(vetor, esq, dir, &i, &j);
+    if(esq < j){
+        ordena(vetor, esq, j);
+    }
+    if(i < dir){
+        ordena(vetor, i, dir);
+    }
+}
+
+double quick_sort(int* vetor, int n){
+    double tempo;
+    clock_t IniC, FimC;
+    IniC = clock();
+
+    ordena(vetor, 0, n-1);
+
+    FimC = clock();
+    tempo = (FimC - IniC) / (double)CLOCKS_PER_SEC;
+
+    return tempo;
+}
+
+// Heap Sort
+
+void heapify(int* vet, int n, int i){
+    int l = 2*n + 1;
+    int r = 2*n + 2;
+    int menor = n;
+
+    if( l <= i && vet[l] < vet[n]){
+        menor = l;
+    }
+
+    if(r <= i && vet[r] < vet[menor]){
+        menor = r;
+    }
+
+    if (menor != n){
+        int temp =  vet[n];
+        vet[n] = vet[menor];
+        vet[menor] = temp;
+        heapify(vet, menor, i);
+    }
+}
+
+void buildHeap(int* vet, int tamanho){
+    for(int i = tamanho/2; i >= 0; i--){
+        heapify(vet, i, tamanho);
+    }
+}
+
+double heap_sort(int* vet, int tamanho){
+
+    double tempo;
+    clock_t IniC, FimC;
+    IniC = clock();
+
+    buildHeap(vet, tamanho);
+
+    int i;
+    for(i = tamanho; i >= 1; i--){
+        int temp = vet[0];
+        vet[0] = vet[i];
+        vet[i] = temp;
+        tamanho--;
+        heapify(vet, 0, tamanho);
+    }
+
+    FimC = clock();
+    tempo = (FimC - IniC) / (double)CLOCKS_PER_SEC;
+
+    return tempo;
+}
+
+// Quick Sort Média
+
+void particaoMedia(int* vetor, int esq, int dir, int* i, int* j){
+    int x, w;
+    *i = esq;
+    *j = dir;
+
+    // calculo da média
+    int resultado, t, posminima = 0, posmaxima = 0;
+    int aux[3];
+    aux[0] = *i + (rand()%(*j - *i));
+    aux[1] = *i + (rand()%(*j - *i));
+    aux[2] = *i + (rand()%(*j - *i));
+
+    for (t = 0; t < 3; t++){
+        if (vetor[aux[t]] < vetor[posminima]){
+            posminima = t;
+        }
+
+        if(vetor[aux[t]] > vetor[posmaxima]){
+            posmaxima = t;
+        }
+    }
+
+    for (t = 0; t < 3; t++){
+        if(t != posminima && t!= posmaxima){
+            resultado = aux[t];
+        }
+    }
+
+    x = vetor[resultado];
+
+    do{
+        while(x > vetor[*i]){
+            (*i)++;
+        }
+        while(x < vetor[*j]){
+            (*j)--;
+        }
+        if(*i <= *j){
+            w = vetor[*i];
+            vetor[*i] = vetor[*j];
+            vetor[*j] = w;
+            (*i)++;
+            (*j)--;
+        }
+    }while(*i <= *j);
+}
+
+void ordenaMedia(int *vetor, int esq, int dir){
+    int i, j;
+    particaoMedia(vetor, esq, dir, &i, &j);
+
+    if(esq < j){
+        ordenaMedia(vetor, esq, j);
+    }
+
+    if (i < dir){
+        ordenaMedia(vetor, i, dir);
+    }
+}
+
+double quickSortMedia(int* vetor, int n){
+    double tempo;
+    clock_t InicC, FimC;
+    InicC = clock();
+
+    ordenaMedia(vetor, 0, n - 1);
+
+    FimC = clock();
+    tempo = (FimC - InicC) / (double)CLOCKS_PER_SEC;
+
+    return tempo;
+}
+
+// Mediana
+void swap(int vetor[], int i, int j){
+    int temp = vetor[i];
+    vetor[i] = vetor[j];
+    vetor[j] = temp;
+}
+
+int particaoMediana(int vetor[], int esq, int dir){
+    int meio = (esq + dir) / 2;
+    int a = vetor[esq];
+    int b = vetor[meio];
+    int c = vetor[dir];
+    int medianaIndice;
+
+    if(a < b){
+        if (b < c){
+            medianaIndice = meio;
+        }else{
+            if (a < c){
+                medianaIndice = dir;
+            }else{
+                medianaIndice = esq;
+            }
+        }
+    }
+    else{
+        if(c < b){
+            medianaIndice = meio;
+        }else{
+            if(c < a){
+                medianaIndice = dir;
+            }else{
+                medianaIndice = esq;
+            }
+        }
+    }
+    swap(vetor, medianaIndice, dir);
+    int pivo = vetor[dir];
+    int i = esq - 1;
+    int j;
+
+    for (j = esq; j <= dir - 1; j++){
+        if (vetor[j] <= pivo){
+            i = i + 1;
+            swap(vetor, i, j);
+        }
+    }
+    swap(vetor, i + 1, dir);
+    return i + 1;
+}
+
+void ordenaMediana(int vetor[], int esq, int dir){
+    if(esq < dir){
+        int q = particaoMediana(vetor, esq, dir);
+        ordenaMediana(vetor, esq, q - 1);
+        ordenaMediana(vetor, q + 1, dir);
+    }
+}
+
+double quickSortMediana(int* vetor, int n){
+    double tempo;
+    clock_t IniC, FimC;
+    IniC = clock();
+
+    ordenaMediana(vetor, 0, n - 1);
+
+    FimC = clock();
+    tempo = (FimC - IniC) / (double)CLOCKS_PER_SEC;
+
+    return tempo;
+}
+
+// Random
+int particaoRandom(int vetor[], int esq, int dir){
+    int k;
+    double d;
+    d = (double) rand() / ((double) RAND_MAX + 1);
+    k = d * (dir - esq + 1);
+    int randomIndex = esq + k;
+    swap(vetor, randomIndex, dir);
+
+    int pivo = vetor[dir];
+    int i = esq - 1;
+    int j;
+
+    for (j = esq; j <= dir - 1; j++){
+        if (vetor[j] <= pivo){
+            i = i + 1;
+            swap(vetor, i, j);
+        }
+    }
+    swap(vetor, i + 1, dir);
+    return i + 1;
+}
+
+void ordenaRandom(int vetor[], int esq, int dir){
+    if (esq < dir){
+        int q = particaoRandom(vetor, esq, dir);
+        ordenaRandom(vetor, esq, q - 1);
+        ordenaRandom(vetor, q + 1, dir);
+    }
+}
+
+double quickSortRandom(int vetor[], int n){
+    double tempo;
+    clock_t InicC, FimC;
+    InicC = clock();
+
+    ordenaRandom(vetor, 0, n - 1);
+
+    FimC = clock();
+    tempo = (FimC - InicC) / (double)CLOCKS_PER_SEC;
+
+    return tempo;
+}
 #endif

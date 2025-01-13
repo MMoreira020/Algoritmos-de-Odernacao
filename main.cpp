@@ -5,6 +5,7 @@
 #include "menu.h"
 #include "funcoes.h"
 #include "algoritmos.h"
+#include "Funcoes_heap.h"
 
 using namespace std;
 
@@ -13,39 +14,50 @@ int main(){
     int algoritmo = 0;
     int tipo;
     int quantidade;
+    string nome_do_arquivo;
 
-    while(true){
+    while(algoritmo != 15){
 
         algoritmo = menuOpcoes(); 
         system("cls");
-        if(algoritmo == 0){
+        if(algoritmo == 15){
             return 0; // Sair do programa
         }
 
-        tipo = menuDeEntrada(); 
-        system("cls");
-        quantidade = menuDeQuantidade(); 
-        system("cls");
+        if (algoritmo == 11){
+            heap_minimum();
+        }else if(algoritmo == 12){
+            heap_extract_min();
+        }else if(algoritmo == 13){
+            heap_increase_key();
+        }else if(algoritmo == 14){
+            max_heap_insert();
+        }else{
 
-        // Parte responsável por criar as pastas iniciais
-        string nome_arquivo = Algoritmo_Escolhido(algoritmo); // Usando a função do novo menu
-        Pasta(nome_arquivo, tipo); // Criando pastas com base no tipo de entrada
+            tipo = menuDeEntrada();
+            system("cls");
+            quantidade = menuDeQuantidade();
+            system("cls");
 
-        quantidade = muda_tamanho(quantidade); // Ajustando a quantidade para o valor correto
+            nome_do_arquivo = Algoritmo_Escolhido(algoritmo);
+            Pasta(nome_do_arquivo, tipo);
 
-        switch (tipo){
-            case 1:
-                Crescente(algoritmo, quantidade); // Chamada para gerar dados em ordem crescente
-                break;
-            case 2:
-                Decrescente(algoritmo, quantidade); // Chamada para gerar dados em ordem decrescente
-                break;
-            case 3:
-                Random(algoritmo, quantidade); // Chamada para gerar dados aleatórios
-                break;
-            default:
-                cout << "Tipo de entrada inválido!" << endl; // Tratamento de erro para tipo inválido
-                break;
+            quantidade = muda_tamanho(quantidade);
+
+            switch(tipo){
+                case 1:
+                    Crescente(algoritmo, quantidade);
+                    break;
+                
+                case 2:
+                    Decrescente(algoritmo, quantidade);
+                    break;
+                
+                case 3:
+                    Random(algoritmo, quantidade);
+                    break;
+            }
+
         }
     }
     return 0;

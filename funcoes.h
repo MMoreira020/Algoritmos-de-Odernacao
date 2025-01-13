@@ -37,7 +37,31 @@ string Algoritmo_Escolhido(int tipo){
         return tipo_algoritmo;
         break;
 
+    case  6:
+        tipo_algoritmo = "Quick_Sort\\";
+        return tipo_algoritmo;
+        break;
     
+    case 7:
+        tipo_algoritmo = "Quick_Sort_Media\\";
+        return tipo_algoritmo;
+        break;
+    
+    case 8:
+        tipo_algoritmo = "Quick_Sort_Mediana\\";
+        return tipo_algoritmo;
+        break;
+    
+    case 9:
+        tipo_algoritmo = "Quick_Sort_Random\\";
+        return tipo_algoritmo;
+        break;
+
+    case 10:
+        tipo_algoritmo = "Heap_Sort\\";
+        return tipo_algoritmo;
+        break;
+
     default:
         cout << "ERRO - NAO FOI POSSIVEL CRIAR A PASTA";
         exit(1);
@@ -69,6 +93,26 @@ double Organiza(int algoritmo, int *array, int tamanho){
     
     case 5:
         tempo = merge_sort(array, 0, tamanho - 1);
+        break;
+    
+    case 6:
+        tempo = quick_sort(array, tamanho);
+        break;
+
+    case 7: 
+        tempo = quickSortMedia(array, tamanho);
+        break;
+    
+    case 8:
+        tempo = quickSortMediana(array, tamanho);
+        break;
+    
+    case 9: 
+        tempo = quickSortRandom(array, tamanho);
+        break;
+        
+    case 10: 
+        tempo = heap_sort(array, tamanho);
         break;
     
     default:

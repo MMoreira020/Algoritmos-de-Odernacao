@@ -23,7 +23,16 @@ int menuOpcoes(){
         cout << "3 - Ordenar com Bubble Sort" <<endl;
         cout << "4 - Ordenar com Shell Sort" <<endl;
         cout << "5 - Ordenar com Merge Sort" <<endl;
-        cout << "0 - Sair" <<endl;
+        cout << "6 - Ordenar com Quick Sort (PRIMEIRO ELEMENTO)" <<endl;
+        cout << "7 - Ordenar com Quick Sort (MEDIA)" <<endl;
+        cout << "8 - Ordenar com Quick Sort (MEDIANA)" <<endl;
+        cout << "9 - Ordenar com Quick Sort (RANDOM)" <<endl;
+        cout << "10 - Ordenar com Heap Sort (Minimo)" <<endl;
+        cout << "11. Operacao Heap Minimum" <<endl;
+        cout << "12. Operacao Heap Extract Min" <<endl;
+        cout << "13. Operacao Heap Increase Key" <<endl;
+        cout << "14. Operacao Max Heap Insert " <<endl;
+        cout << "15 - Sair" <<endl;
 
         cin >> opcao1;
 
